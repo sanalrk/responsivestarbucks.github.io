@@ -1,1 +1,0 @@
-# responsivestarbucks.github.io

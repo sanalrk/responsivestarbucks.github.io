@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Image Slider</title>
+<style>
+  .slider-container {
+    position: relative;
+    width: 100%;
+    max-width: 100%;
+    margin: auto;
+    overflow: hidden;
+  }
+  
+  .slider {
+    display: flex;
+    transition: transform 0.5s ease;
+  }
+  
+  .slide {
+    flex: 0 0 100%;
+    max-width: 100%;
+    display: none; /* Initially hide all slides */
+  }
+  
+  .slide.active {
+    display: block; /* Show the active slide */
+  }
+
+  .button-container {
+    text-align: center;
+    margin-top: 10px;
+  }
+  
+  .change-button {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+</style>
+</head>
+<body>
+
+<div class="slider-container">
+  <div class="slider" style="height: 100vh;">
+    <div class="slide active"><img src="img/box-b.png" alt="Image 1" style="height: 100%; width: 100%;"></div>
+    <div class="slide"><img src="img/box-c.png" alt="Image 2" style="height: 100%; width: 100%;"></div>
+    <div class="slide"><img src="img/box-d.png" alt="Image 3" style="height: 100%; width: 100%;"></div>
+  </div>
+</div>
+
+<div class="button-container">
+  <button class="change-button">Next Image</button>
+</div>
+
+
+<h1>Counter</h1>
+<p id="counter">0</p>
+<button onclick="increment()">Increment</button>
+<button onclick="decrement()">Decrement</button>
+<button onclick="reset()">Reset</button>
+
+
+<script>
+  const slides = document.querySelectorAll('.slide');
+  const button = document.querySelector('.change-button');
+  let currentIndex = 0;
+
+  function nextSlide() {
+    // Hide the current slide
+    slides[currentIndex].classList.remove('active');
+    // Increment the index
+    currentIndex++;
+    // Reset index if out of range
+    if (currentIndex === slides.length) {
+      currentIndex = 0;
+    }
+    // Show the next slide
+    slides[currentIndex].classList.add('active');
+  }
+
+  button.addEventListener('click', nextSlide);
+
+
+  let count = 0;
+  const counterElement = document.getElementById('counter');
+
+  function updateCounter() {
+    counterElement.textContent = count;
+  }
+
+  function increment() {
+    count++;
+    updateCounter();
+  }
+
+  function decrement() {
+    count--;
+    updateCounter();
+  }
+
+  function reset() {
+    count = 0;
+    updateCounter();
+  }
+</script>
+
+</body>
+</html>

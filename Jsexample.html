@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Counter and Image Slider</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+  }
+  
+  h1 {
+    text-align: center;
+  }
+
+  .counter-container, .image-slider-container {
+    margin: 20px auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    max-width: 500px;
+  }
+
+  #counter, #slider-image {
+    display: block;
+    margin: 0 auto;
+    width: 300px;
+    text-align: center;
+  }
+
+  #slider-image {
+    max-width: 100%;
+    height: auto;
+  }
+
+  .buttons {
+    text-align: center;
+    margin-top: 10px;
+  }
+
+  button {
+    padding: 10px 20px;
+    margin: 0 5px;
+    border: none;
+    border-radius: 5px;
+    background-color: #007bff;
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+
+  button:hover {
+    background-color: #0056b3;
+  }
+</style>
+</head>
+<body>
+
+<h1>Counter and Image Slider</h1>
+
+<div class="counter-container">
+  <h2>Counter</h2>
+  <p id="counter">0</p>
+  <div class="buttons">
+    <button onclick="increment()">Increment</button>
+    <button onclick="decrement()">Decrement</button>
+    <button onclick="reset()">Reset</button>
+  </div>
+</div>
+
+<div class="image-slider-container">
+  <h2>Image Slider</h2>
+  <img id="slider-image" src="image1.jpg" alt="Slider Image">
+  <div class="buttons">
+    <button onclick="prevImage()">Previous</button>
+    <button onclick="nextImage()">Next</button>
+  </div>
+</div>
+
+<script>
+  // Counter JavaScript
+  let count = 0;
+  const counterElement = document.getElementById('counter');
+
+  function updateCounter() {
+    counterElement.textContent = count;
+  }
+
+  function increment() {
+    count++;
+    updateCounter();
+  }
+
+  function decrement() {
+    count--;
+    updateCounter();
+  }
+
+  function reset() {
+    count = 0;
+    updateCounter();
+  }
+
+  // Image Slider JavaScript
+  const images = ['image1.jpg', 'image2.jpg', 'image3.jpg'];
+  let currentImageIndex = 0;
+  const sliderImageElement = document.getElementById('slider-image');
+
+  function showImage() {
+    sliderImageElement.src = images[currentImageIndex];
+  }
+
+  function nextImage() {
+    currentImageIndex++;
+    if (currentImageIndex >= images.length) {
+      currentImageIndex = 0;
+    }
+    showImage();
+  }
+
+  function prevImage() {
+    currentImageIndex--;
+    if (currentImageIndex < 0) {
+      currentImageIndex = images.length - 1;
+    }
+    showImage();
+  }
+
+  showImage(); // Display the initial image
+</script>
+
+</body>
+</html>

@@ -190,8 +190,10 @@ img {
 	border-color: #000;
 }
 
-@media (max-width: 767px) {
-    .link-list-wrapper-class {
-      display: none;
-    }
-  }
+@media screen and (max-width: 768px){
+	.btn-custom-dark-bg:hover{
+		background-color: #333;
+		
+	}
+    
+} 
